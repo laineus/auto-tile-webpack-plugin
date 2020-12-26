@@ -4,9 +4,9 @@
 [![npm](https://img.shields.io/npm/v/auto-tile-webpack-plugin.svg)](https://www.npmjs.com/package/auto-tile-webpack-plugin)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/laineus/auto-tile-webpack-plugin/blob/master/LICENSE)
 
-A Webpack plugin to extrude tilesets automatically with [auto-tiler](https://github.com/sporadic-labs/auto-tiler).
+A Webpack plugin to generate expanded autotiles and its setting for Tiled from minimal autotiles automatically.
 
-It will be re-extruded automatically when added or modified images while webpack is watching.
+It will be re-generated automatically when added or modified images while webpack is watching.
 
 # Usage
 
@@ -31,11 +31,20 @@ const AutoTileWebpackPlugin = require('auto-tile-webpack-plugin')
   plugins: [
     new AutoTileWebpackPlugin({
       size: 32,
-      input: './public/img/original_tilesets',
-      output: './public/img/extruded_tilesets'
+      input: './public/img/original_autotiles',
+      output: './public/img/tilesets'
     })
   ]
 }
+```
+
+```
+- public/img/
+  - original_autotiles/
+    - town.png // Minimal autile image (Follow `examples/input.png`)
+  - tilesets/
+    - town.png // Generated image
+    - town.tmx // Generated setting for Tiled
 ```
 
 Options:
@@ -45,6 +54,18 @@ Options:
 |size|Tile size.|
 |input|Input directory. Original images should be here.|
 |output|Output directory. Extruded images will be here.|
+
+## Use it on Tiled
+
+Make a rules.txt that listed path to settings and place it under your project directory for Tiled.
+
+```
+path/to/town.tmx
+path/to/dungeon.tmx
+..
+```
+
+The around of the autotiles need to be filled with something another tile.
 
 # Requirements
 
