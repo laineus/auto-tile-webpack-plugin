@@ -8,6 +8,10 @@ A Webpack plugin to generate expanded autotiles and its setting for Tiled from m
 
 It will be re-generated automatically when added or modified images while webpack is watching.
 
+|Original|Expanded|
+|---|---|
+|![Original](example/input.png)|![Expanded](example/output.png)|
+
 # Usage
 
 Install:
