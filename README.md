@@ -10,7 +10,7 @@ It will be re-generated automatically when added or modified images while webpac
 
 |Original|Expanded|
 |---|---|
-|![Original](example/input.png)|![Expanded](example/output.png)|
+|![Original](examples/input.png)|![Expanded](examples/output.png)|
 
 # Usage
 
