@@ -1,0 +1,10 @@
+{
+  "name": "auto-tile-webpack-plugin",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Laineus",
+  "license": "MIT",
+  "dependencies": {
+    "sharp": "^0.27.0"
+  }
+}
