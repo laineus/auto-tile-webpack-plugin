@@ -69,7 +69,8 @@ path/to/dungeon.tmx
 ..
 ```
 
-The around of the autotiles need to be filled with something another tile.
+- The around of the autotiles need to be filled with something another tile.
+- Layer name need to be same as file name. (`town.png` -> `town`)
 
 # Requirements
 
