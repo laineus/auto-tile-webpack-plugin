@@ -1,6 +1,6 @@
 {
   "name": "auto-tile-webpack-plugin",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Generate autotiles for Tiled automatically",
   "main": "src/index.js",
   "repository": "https://github.com/laineus/auto-tile-webpack-plugin",
