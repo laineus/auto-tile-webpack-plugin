@@ -12,6 +12,8 @@ It will be re-generated automatically when added or modified images while webpac
 |---|---|
 |![Original](examples/input.png)|![Expanded](examples/output.png)|
 
+![](examples/demo.gif)
+
 # Usage
 
 Install:
@@ -58,8 +60,6 @@ Options:
 |size|Tile size.|
 |input|Input directory. Original images should be here.|
 |output|Output directory. Extruded images will be here.|
-
-![](examples/demo.gif)
 
 ## Use it on Tiled
 
