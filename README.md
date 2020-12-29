@@ -10,7 +10,7 @@ It will be re-generated automatically when added or modified images while webpac
 
 |Original|Expanded|
 |---|---|
-|![Original](examples/input.png)|![Expanded](examples/output.png)|
+|![Original](examples/input_pattern1.png)|![Expanded](examples/output.png)|
 
 # Usage
 
@@ -45,7 +45,7 @@ const AutoTileWebpackPlugin = require('auto-tile-webpack-plugin')
 ```
 - public/img/
   - original_autotiles/
-    - town.png // Minimal autile image (Follow `examples/input.png`)
+    - town.png // Minimal autile image (Follow `examples/input_*.png`)
   - tilesets/
     - town.png // Generated image
     - town.tmx // Generated setting for Tiled
@@ -58,6 +58,7 @@ Options:
 |size|Tile size.|
 |input|Input directory. Original images should be here.|
 |output|Output directory. Extruded images will be here.|
+|pattern|Autotile pattern (`'pattern1'` | `'pattern2'`) (Not require)|
 
 ## Use it on Tiled
 
