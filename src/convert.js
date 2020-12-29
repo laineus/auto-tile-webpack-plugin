@@ -1,13 +1,59 @@
 const sharp = require('sharp')
-const pattern1 = require('./settings/pattern1')
-const pattern2 = require('./settings/pattern2')
-const getSetting = pattern => {
-  switch (pattern) {
-    case 'pattern1': return pattern1
-    case 'pattern2': return pattern2
-    default: throw new Error('Undefined pattern')
-  }
-}
+const TILES = [
+  [13, 14, 17, 18],
+  [2, 14, 17, 18],
+  [13, 3, 17, 18],
+  [2, 3, 17, 18],
+  [13, 14, 17, 7],
+  [2, 14, 17, 7],
+  [13, 3, 17, 7],
+  [2, 3, 17, 7],
+  // ---
+  [13, 14, 6, 18],
+  [2, 14, 6, 18],
+  [13, 3, 6, 18],
+  [2, 3, 6, 18],
+  [13, 14, 6, 7],
+  [2, 14, 6, 7],
+  [13, 3, 6, 7],
+  [2, 3, 6, 7],
+  // ---
+  [12, 14, 16, 18],
+  [12, 3, 16, 18],
+  [12, 14, 16, 7],
+  [12, 3, 16, 7],
+  [9, 10, 17, 18],
+  [9, 10, 17, 7],
+  [9, 10, 6, 18],
+  [9, 10, 6, 7],
+  // ---
+  [13, 15, 17, 19],
+  [13, 15, 6, 19],
+  [2, 15, 17, 19],
+  [2, 15, 6, 19],
+  [13, 14, 21, 22],
+  [2, 14, 21, 22],
+  [13, 3, 21, 22],
+  [2, 3, 21, 22],
+  // ---
+  [12, 15, 16, 19],
+  [9, 10, 21, 22],
+  [8, 9, 12, 13],
+  [8, 9, 12, 7],
+  [10, 11, 14, 15],
+  [10, 11, 6, 15],
+  [18, 19, 22, 23],
+  [2, 19, 22, 23],
+  // ---
+  [16, 17, 20, 21],
+  [16, 3, 20, 21],
+  [8, 11, 12, 15],
+  [8, 9, 20, 21],
+  [16, 19, 20, 23],
+  [10, 11, 22, 23],
+  [8, 11, 20, 23],
+  [8, 11, 20, 23]
+]
 const indexToPos = (index, numOfHorizontal, size) => {
   const left = (index % numOfHorizontal) * size
   const top = Math.floor(index / numOfHorizontal) * size
@@ -17,9 +63,9 @@ const indexToExtractData = (index, size) => {
   const { left, top } = indexToPos(index, 4, size)
   return { left, top, width: size, height: size }
 }
-const convert = async (inputPath, size, pattern = 'pattern1') => {
+const convert = async (inputPath, size) => {
   const original = await sharp(inputPath)
-  const bufferData = await Promise.all(getSetting(pattern).map(async indexes => {
+  const bufferData = await Promise.all(TILES.map(async indexes => {
     const promises = indexes.map(index => original.extract(indexToExtractData(index, size / 2)).toBuffer())
     return await Promise.all(promises)
   }))

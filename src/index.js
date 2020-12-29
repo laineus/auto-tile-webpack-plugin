@@ -36,7 +36,7 @@ module.exports = class {
   }
   convert (file) {
     const size = this.settings.size
-    convert(path.join(this.inputDir, file), size, this.settings.pattern).then(buffer => {
+    convert(path.join(this.inputDir, file), size).then(buffer => {
       return fs.writeFileSync(path.join(this.outputDir, file), buffer)
     })
     const keyName = file.split('.')[0]
