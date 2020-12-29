@@ -59,6 +59,8 @@ Options:
 |input|Input directory. Original images should be here.|
 |output|Output directory. Extruded images will be here.|
 
+![](examples/demo.gif)
+
 ## Use it on Tiled
 
 Make a rules.txt that listed path to settings and place it under your project directory for Tiled.
