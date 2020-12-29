@@ -58,7 +58,7 @@ Options:
 |size|Tile size.|
 |input|Input directory. Original images should be here.|
 |output|Output directory. Extruded images will be here.|
-|pattern|Autotile pattern (`pattern1` | `pattern2`) (Not require)|
+|pattern|Autotile pattern (`'pattern1'`, `'pattern2'`) (Not require)|
 
 ## Use it on Tiled
 
