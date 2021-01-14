@@ -35,17 +35,6 @@ module.exports = class {
     }, 1000)
   }
   convert (file) {
-    const size = this.settings.size
-    convert(path.join(this.inputDir, file), size).then(buffer => {
-      return fs.writeFileSync(path.join(this.outputDir, file), buffer)
-    })
-    const keyName = file.split('.')[0]
-    const ruleTmx = fs.readFileSync(path.resolve(__dirname, './rule.tmx'), 'utf-8')
-                      .replace(/\{FILE_NAME\}/g, file)
-                      .replace(/\{TILE_SIZE\}/g, size)
-                      .replace(/\{LAYER_NAME\}/g, keyName)
-                      .replace(/\{WIDTH\}/g, size * 8)
-                      .replace(/\{HEIGHT\}/g, size * 6)
-    fs.writeFileSync(path.join(this.outputDir, `${keyName}.tmx`), ruleTmx)
+    convert(path.join(this.inputDir, file), this.outputDir, this.settings.size)
   }
 }
