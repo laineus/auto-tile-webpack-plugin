@@ -1,8 +1,8 @@
 
 # AutoTileWebpackPlugin
 
-[![npm](https://img.shields.io/npm/v/auto-tile-webpack-plugin.svg)](https://www.npmjs.com/package/auto-tile-webpack-plugin)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/laineus/auto-tile-webpack-plugin/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/auto-tile-webpack-plugin.svg?style=for-the-badge)](https://www.npmjs.com/package/auto-tile-webpack-plugin)
+[![license](https://img.shields.io/github/license/laineus/auto-tile-webpack-plugin.svg?style=for-the-badge&color=blue)](https://github.com/laineus/auto-tile-webpack-plugin/blob/master/LICENSE)
 
 A Webpack plugin to generate expanded autotiles and its setting for Tiled from minimal autotiles automatically.
 
@@ -73,6 +73,26 @@ path/to/dungeon.tmx
 
 - The around of the autotiles need to be filled with something another tile.
 - Layer name need to be same as file name. (`town.png` -> `town`)
+
+# CLI
+
+```
+$ autotile --input <input dir> --output <output dir> --size <tile size>
+```
+
+or
+
+```
+$ autotile --config <path to config>
+```
+
+```js
+module.exports = {
+  size: 32,
+  input: './input',
+  output: './output'
+}
+```
 
 # Requirements
 
