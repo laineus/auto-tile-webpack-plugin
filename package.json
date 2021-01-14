@@ -3,10 +3,14 @@
   "version": "0.9.3",
   "description": "Generate autotiles for Tiled automatically",
   "main": "src/index.js",
+  "bin": {
+    "autotile": "bin/index"
+  },
   "repository": "https://github.com/laineus/auto-tile-webpack-plugin",
   "author": "Laineus",
   "license": "MIT",
   "dependencies": {
+    "commander": "^6.2.1",
     "sharp": "^0.27.0"
   }
 }

@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const path = require('path')
+const fs = require('fs')
+const convert = require('../src/convert')
+
+program
+  .option('-i, --input <path>', 'the dir to the tilesets', String)
+  .option('-o, --output <path>', 'the dir to output', String)
+  .option('-s, --size <path>', 'the tile size', Number)
+  .option('--config <path>', 'the path to config file', String)
+  .parse(process.argv)
+
+const config = program.config && require(path.resolve(program.config))
+const { size, input, output } = config || program
+
+if (!input || !output || !size) {
+  console.log('Parameter is missing:')
+  return program.help()
+}
+
+const inputDir = path.resolve(input)
+const outputDir = path.resolve(output)
+
+if (inputDir === outputDir) {
+  return console.log('[Error] Input dir and output dir must not be same.')
+}
+
+const files = fs.readdirSync(inputDir).filter(file => file.endsWith('.png'))
+files.forEach(file => {
+  convert(path.join(inputDir, file), outputDir, size)
+})
