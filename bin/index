@@ -28,6 +28,6 @@ if (inputDir === outputDir) {
 }
 
 const files = fs.readdirSync(inputDir).filter(file => file.endsWith('.png'))
-files.forEach(file => {
-  convert(path.join(inputDir, file), outputDir, size)
-})
+files.reduce((prev, file) => {
+  return prev.then(() => convert(path.join(inputDir, file), outputDir, size))
+}, Promise.resolve())

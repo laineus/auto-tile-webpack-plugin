@@ -14,7 +14,9 @@ module.exports = class {
     compiler.hooks.afterEnvironment.tap('TileSpriter', () => {
       console.log('TileSpriterWebpackPlugin: Converting all files...')
       const files = fs.readdirSync(this.inputDir).filter(file => file.endsWith('.png'))
-      files.forEach(file => this.convert(file))
+      files.reduce((prev, file) => {
+        return prev.then(() => this.convert(file))
+      }, Promise.resolve())
       if (compiler.options.mode === 'development') this.watch()
     })
   }
