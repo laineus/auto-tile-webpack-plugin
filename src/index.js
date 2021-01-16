@@ -11,8 +11,8 @@ module.exports = class {
     this.inputDir = path.resolve(this.projectRoot, this.settings.input)
     this.outputDir = path.resolve(this.projectRoot, this.settings.output)
     if (this.inputDir === this.outputDir) throw new Error('[Error] Input dir and output dir should not be same.')
-    compiler.hooks.afterEnvironment.tap('TileSpriter', () => {
-      console.log('TileSpriterWebpackPlugin: Converting all files...')
+    compiler.hooks.afterEnvironment.tap('AutoTile', () => {
+      console.log('AutoTileWebpackPlugin: Converting all files...')
       const files = fs.readdirSync(this.inputDir).filter(file => file.endsWith('.png'))
       files.reduce((prev, file) => {
         return prev.then(() => this.convert(file))
@@ -30,7 +30,7 @@ module.exports = class {
     setInterval(() => {
       modifiedFiles.forEach(file => {
         if (!fs.existsSync(path.join(this.inputDir, file))) return
-        console.log(`TileSpriterWebpackPlugin: Converting ${file}...`)
+        console.log(`AutoTileWebpackPlugin: Converting ${file}...`)
         this.convert(file)
       })
       modifiedFiles.splice(0)
